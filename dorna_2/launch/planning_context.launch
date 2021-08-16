@@ -6,10 +6,10 @@
   <arg name="robot_description" default="robot_description"/>
 
   <!-- Load universal robot description format (URDF) -->
-  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(find Dorna_2_Simulation)/urdf/Dorna_2_Simulation.urdf"/>
+  <param if="$(arg load_robot_description)" name="$(arg robot_description)" textfile="$(find Dorna_2_URDF)/urdf/Dorna_2_URDF.urdf"/>
 
   <!-- The semantic description that corresponds to the URDF -->
-  <param name="$(arg robot_description)_semantic" textfile="$(find dorna_2)/config/Dorna_2_Simulation.srdf" />
+  <param name="$(arg robot_description)_semantic" textfile="$(find dorna_2)/config/Dorna_2_URDF.srdf" />
 
   <!-- Load updated joint limits (override information from URDF) -->
   <group ns="$(arg robot_description)_planning">
