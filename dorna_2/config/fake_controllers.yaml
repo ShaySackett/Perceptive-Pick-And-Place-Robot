@@ -10,4 +10,4 @@ controller_list:
       - Joint_5
 initial:  # Define initial robot poses.
   - group: arm_group
-    pose: Home
+    pose: home
