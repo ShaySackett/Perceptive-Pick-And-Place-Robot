@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="dorna_2_urdf_collision">
+  <link
+    name="base_link_col">
+    <inertial>
+      <origin
+        xyz="0.083451 3.5735E-15 0.3539"
+        rpy="0 0 0" />
+      <mass
+        value="49.605" />
+      <inertia
+        ixx="0.98272"
+        ixy="-3.1641E-15"
+        ixz="-1.1558E-14"
+        iyy="2.7951"
+        iyz="6.5198E-16"
+        izz="3.3445" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/base_link_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/base_link_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Link_1_col">
+    <inertial>
+      <origin
+        xyz="-0.015094 -5.3291E-15 0.13585"
+        rpy="0 0 0" />
+      <mass
+        value="1.5791" />
+      <inertia
+        ixx="0.0029521"
+        ixy="1.2251E-17"
+        ixz="-0.00069421"
+        iyy="0.0056737"
+        iyz="3.7776E-18"
+        izz="0.0062883" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_1_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_1_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_0"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link_col" />
+    <child
+      link="Link_1_col" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2.7925"
+      upper="3.1416"
+      effort="10"
+      velocity="10.472" />
+  </joint>
+  <link
+    name="Link_2_col">
+    <inertial>
+      <origin
+        xyz="0.043312 -0.0508 -2.4286E-07"
+        rpy="0 0 0" />
+      <mass
+        value="1.0505" />
+      <inertia
+        ixx="0.0012117"
+        ixy="6.1528E-17"
+        ixz="5.8049E-14"
+        iyy="0.0041555"
+        iyz="-2.0844E-17"
+        izz="0.0047565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_2_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_2_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_1"
+    type="revolute">
+    <origin
+      xyz="0.095476 0.0508 0.20647"
+      rpy="0 0 0" />
+    <parent
+      link="Link_1_col" />
+    <child
+      link="Link_2_col" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.5708"
+      upper="3.1415"
+      effort="10"
+      velocity="7.854" />
+  </joint>
+  <link
+    name="Link_3_col">
+    <inertial>
+      <origin
+        xyz="0.032637 -0.04445 1.6417E-13"
+        rpy="0 0 0" />
+      <mass
+        value="0.77123" />
+      <inertia
+        ixx="0.00061477"
+        ixy="4.0088E-17"
+        ixz="-1.1158E-17"
+        iyy="0.0024892"
+        iyz="-1.353E-17"
+        izz="0.0027826" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_3_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_3_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_2"
+    type="revolute">
+    <origin
+      xyz="0.2032 -0.00635 0"
+      rpy="0 0 0" />
+    <parent
+      link="Link_2_col" />
+    <child
+      link="Link_3_col" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.4784"
+      upper="2.4784"
+      effort="10"
+      velocity="7.854" />
+  </joint>
+  <link
+    name="Link_4_col">
+    <inertial>
+      <origin
+        xyz="-5.38458166943201E-15 -0.0412750000000147 2.08166817117217E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.00942477796076938" />
+      <inertia
+        ixx="9.42477796076939E-07"
+        ixy="-9.85999290163209E-21"
+        ixz="-3.35345028402582E-34"
+        iyy="4.71238898038469E-07"
+        iyz="-1.62577890766366E-20"
+        izz="9.42477796076939E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_4_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078431372549 0.4 0.180392156862745 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_4_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_3"
+    type="revolute">
+    <origin
+      xyz="0.1524 -0.003175 0"
+      rpy="0 0 0" />
+    <parent
+      link="Link_3_col" />
+    <child
+      link="Link_4_col" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-2.3562"
+      upper="2.3562"
+      effort="10"
+      velocity="34.907" />
+  </joint>
+  <link
+    name="Link_5_col">
+    <inertial>
+      <origin
+        xyz="0.093841 -0.029524 2.4285E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.58203" />
+      <inertia
+        ixx="0.0014569"
+        ixy="-2.3378E-17"
+        ixz="-1.966E-19"
+        iyy="0.00032834"
+        iyz="-4.1885E-17"
+        izz="0.0014946" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_5_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_5_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_4"
+    type="continuous">
+    <origin
+      xyz="-0.021438 -0.041275 0"
+      rpy="0 0 0" />
+    <parent
+      link="Link_4_col" />
+    <child
+      link="Link_5_col" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="Link_6_col">
+    <inertial>
+      <origin
+        xyz="8.6389E-09 0.005 2.5118E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.00031177" />
+      <inertia
+        ixx="3.3775E-09"
+        ixy="-3.5362E-23"
+        ixz="-1.5529E-24"
+        iyy="1.5588E-09"
+        iyz="-6.7576E-23"
+        izz="3.3775E-09" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_6_col.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.76078 0.4 0.18039 0.3" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dorna_2_urdf_collision/meshes/Link_6_col.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_5"
+    type="continuous">
+    <origin
+      xyz="0.097875 -0.12269 0"
+      rpy="0 0 0" />
+    <parent
+      link="Link_5_col" />
+    <child
+      link="Link_6_col" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+</robot>
