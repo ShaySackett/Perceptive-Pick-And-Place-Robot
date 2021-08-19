@@ -5,6 +5,6 @@
 
   <arg name="pipeline" default="ompl" />
 
-  <include file="$(dirname)/$(arg pipeline)_planning_pipeline.launch.xml" />
+  <include file="$(find dorna_2)/launch/$(arg pipeline)_planning_pipeline.launch.xml" />
 
 </launch>

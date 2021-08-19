@@ -16,8 +16,8 @@
   <param name="trajectory_execution/allowed_start_tolerance" value="0.01"/> <!-- default 0.01 -->
 
   <!-- Load the robot specific controller manager; this sets the moveit_controller_manager ROS parameter -->
-  <arg name="moveit_controller_manager" default="Dorna_2_URDF" />
-  <include file="$(dirname)/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml">
+  <arg name="moveit_controller_manager" default="dorna_2_config" />
+  <include file="$(find dorna_2)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml">
     <arg name="execution_type" value="$(arg execution_type)" />
   </include>
 

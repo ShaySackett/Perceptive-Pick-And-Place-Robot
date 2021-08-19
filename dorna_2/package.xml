@@ -3,7 +3,7 @@
   <name>dorna_2</name>
   <version>0.3.0</version>
   <description>
-     An automatically generated package with all the configuration and launch files for using the Dorna_2_URDF with the MoveIt Motion Planning Framework
+     An automatically generated package with all the configuration and launch files for using the dorna_2_config with the MoveIt Motion Planning Framework
   </description>
   <author email="shaysacketttek@gmail.com">Shay Sackett</author>
   <maintainer email="shaysacketttek@gmail.com">Shay Sackett</maintainer>
@@ -31,7 +31,7 @@
   <run_depend>xacro</run_depend>
   <!-- This package is referenced in the warehouse launch files, but does not build out of the box at the moment. Commented the dependency until this works. -->
   <!-- <run_depend>warehouse_ros_mongo</run_depend> -->
-    <run_depend>Dorna_2_URDF</run_depend>
+    <run_depend>dorna_2_config</run_depend>
 
 
 </package>

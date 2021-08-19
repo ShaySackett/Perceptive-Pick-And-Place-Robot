@@ -10,7 +10,6 @@
   <node pkg="moveit_setup_assistant" type="moveit_setup_assistant" name="moveit_setup_assistant"
         args="--config_pkg=dorna_2"
         launch-prefix="$(arg launch_prefix)"
-        required="true"
         output="screen" />
 
 </launch>
