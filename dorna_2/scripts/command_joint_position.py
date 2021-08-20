@@ -26,7 +26,7 @@ def callback_receive_JointStates(msg):
 
 	#pull each joints' respective angular position from ros_position array, then convert JointState type to a float, then convert from radians in ROS to degrees for Dorna 2 API,
 	j_0_JSON = math.degrees(float(ros_position[0]))
-	j_1_JSON = (math.degrees(float(-1*ros_position[1])))  #need to add pi here since ROS and Dorna Coordinate "zeroes" are offset from one another
+	j_1_JSON = math.degrees(float(ros_position[1])) #need to add pi here since ROS and Dorna Coordinate "zeroes" are offset from one another
 
 
 
@@ -45,19 +45,21 @@ if __name__ == '__main__':
 
 	sub = rospy.Subscriber("/joint_states", JointState, callback_receive_JointStates) 
 	
-
-	#create a variable that causes first point to be skipped
-	first_point = True
+	id_counter = 0
 
 	while not rospy.is_shutdown():
-		
 
-		if (old_position != ros_position) and first_point == False:
-			rospy.loginfo(str(j_0_JSON) + " , " +str(j_1_JSON))
-			robot.play(cmd = "jmove", rel = 0, j0 = j_0_JSON, j1 = j_1_JSON, vel = 10, accel = 100,jerk = 1000, id = 1)
-			#robot.wait(id = 1, stat = 2)
+		
+		if (old_position != ros_position):
+			
+			rospy.loginfo(str(math.radians(j_0_JSON)) + " , " +str(math.radians(j_1_JSON)))
+			robot.play(cmd = "jmove", rel = 0, j0 = j_0_JSON, j1 = j_1_JSON, vel = 10, accel = 100,jerk = 1000, id = id_counter)
+			#robot.wait(id = id_counter, stat = 2)
+
+			id_counter += 1
 			old_position = ros_position
-			first_point = False
+			
+			
 
 	    
     #close robot connection and websocket connection if robot is no longer connected
