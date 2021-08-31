@@ -28,7 +28,7 @@
         <joint name="joint_5" value="0"/>
     </group_state>
     <group_state name="home" group="arm_group">
-        <joint name="joint_0" value="0"/>
+        <joint name="joint_0" value="3.1416"/>
         <joint name="joint_1" value="-3.1415"/>
         <joint name="joint_2" value="2.4784"/>
         <joint name="joint_3" value="2.3562"/>

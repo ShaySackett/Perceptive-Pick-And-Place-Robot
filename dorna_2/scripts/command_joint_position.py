@@ -12,6 +12,9 @@ old_position = JointState()
 #Added a 'JSON' suffix to differentiate this variable from "j0,j1" etc keys in robot.play command
 j_0_JSON = float()
 j_1_JSON = float()
+j_2_JSON = float()
+j_3_JSON = float()
+j_4_JSON = float()
 
 def callback_receive_JointStates(msg):
 
@@ -19,6 +22,9 @@ def callback_receive_JointStates(msg):
 	global ros_position
 	global j_0_JSON
 	global j_1_JSON
+	global j_2_JSON
+	global j_3_JSON
+	global j_4_JSON
 	
 	#update position of robot arm from JointState message type
 	ros_position = msg.position
@@ -26,8 +32,10 @@ def callback_receive_JointStates(msg):
 
 	#pull each joints' respective angular position from ros_position array, then convert JointState type to a float, then convert from radians in ROS to degrees for Dorna 2 API,
 	j_0_JSON = math.degrees(float(ros_position[0]))
-	j_1_JSON = math.degrees(float(ros_position[1])) #need to add pi here since ROS and Dorna Coordinate "zeroes" are offset from one another
-
+	j_1_JSON = math.degrees(float(-1*ros_position[1]))  #need to multiply by -1 here because the ROS Rviz simulation and Dorna API coordinate systems are mirrored from each other. Not sure why this is the case  
+	j_2_JSON = math.degrees(float(-1*ros_position[2]))
+	j_3_JSON = math.degrees(float(ros_position[3]))
+	j_4_JSON = math.degrees(float(-1*ros_position[4]))
 
 
 
@@ -52,8 +60,8 @@ if __name__ == '__main__':
 		
 		if (old_position != ros_position):
 			
-			rospy.loginfo(str(math.radians(j_0_JSON)) + " , " +str(math.radians(j_1_JSON)))
-			robot.play(cmd = "jmove", rel = 0, j0 = j_0_JSON, j1 = j_1_JSON, vel = 10, accel = 100,jerk = 1000, id = id_counter)
+			rospy.loginfo(str(j_0_JSON) + " , " +str(j_1_JSON) + " , " +str(j_2_JSON) + " , " +str(j_3_JSON)+ " , " +str(j_4_JSON))
+			robot.play(cmd = "jmove", rel = 0, j0 = j_0_JSON, j1 = j_1_JSON, j2 = j_2_JSON, j3 = j_3_JSON, j4 = j_4_JSON, vel = 10, accel = 100,jerk = 1000, id = id_counter)
 			#robot.wait(id = id_counter, stat = 2)
 
 			id_counter += 1
