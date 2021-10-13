@@ -1,0 +1,107 @@
+
+/*
+ * rosserial Servo Control Example +addons
+ * 
+ */
+ 
+/*
+#if (ARDUINO >= 100)
+ #include <Arduino.h>
+#else
+ #include <WProgram.h>
+#endif
+*/
+
+
+#include <AccelStepper.h>
+#include <MultiStepper.h>
+#include <Servo.h> 
+#include <ros.h>
+#include <std_msgs/UInt16.h>
+#include <std_msgs/Bool.h>
+
+
+ros::NodeHandle  nh;
+
+
+int servoPul = 9;
+Servo servo;
+
+// modify items, change for continuous, constant speed set by msg from roscore
+void servo_cb( const std_msgs::UInt16& cmd_msg){
+  servo.write(cmd_msg.data); //set servo angle, should be from 0-180  
+//  digitalWrite(13, HIGH-digitalRead(13));  //toggle led  
+}
+
+ros::Subscriber<std_msgs::UInt16> servo_1("servo", &servo_cb);
+
+int driverPul = 6;
+int driverDir = 7;
+int driverEn = 5;
+int driverAl = 4;
+int microStpn = ; //set microstepping value
+
+// indert pins and steps, place in setup??
+AccelStepper stepper_1(1,6,7);
+
+// might need 2 functions for run and dir  
+void stepper_dir(const std_msgs::Bool& dir_truth){
+  if(dir_truth.data){
+    digitalWrite(7,HIGH);
+    else{
+      digitalWrite(7,LOW);
+    }
+  }
+}
+
+void stepper_run(const std_msgs::Bool& run_truth){
+  if(run_truth.data){
+    stepper_1.run();
+    else{
+      //stop that shitt
+    }
+  }
+}
+
+//can i used sub topics or changeto new topics only
+ros::Subscriber<std_msgs::Bool> stepper_dr("stepperDir", &stepper_dir);  //direction
+ros::Subscriber<std_msgs::Bool> stepper_rn("stepperRun", &stepper_run); //fix speed, on off
+
+//std_msgs::Bool alarm;  do we need &?? should this be intialized first?
+ros::Publisher<std_msgs::Bool> stepper_al("AlarmState", &alarm);   //alarm state
+
+
+void setup(){
+  
+  pinMode(13, OUTPUT);    //for blinking lights
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, INPUT);
+  
+  stepper_1.setMaxSpeed();
+  stepper_1.setAcceleration();
+  stepper_1.setSpeed();
+  
+  nh.initNode();
+
+  nh.subscribe(servo_1);    //proper topic headings? change to sub topic
+  nh.subscribe(stepper_dr);
+  nh.subscribe(stepper_rn);
+  nh.advertise(stepper_al);
+  
+  servo.attach(servoPul); //attach it to pin 9  **before setup??
+  
+}
+
+void loop(){
+  //later dev, add number of roations or distance in radians, add motor direction
+
+  //get alarm pin status write to alarm topic (pin4)
+  stepper_al.publish( &alarm )
+  nh.spinOnce();
+  
+  delay(2);
+  
+}
