@@ -39,30 +39,33 @@ if __name__ == '__main__':
 			
 			#safe_startup
 
-			robot.play(cmd = "jmove", rel = 0, j0 = 0, vel = 20, accel = 100,jerk = 1000, id = 1)
+			robot.play(cmd = "jmove", rel = 0, j0 = 0, vel = 40, accel = 100,jerk = 1000, id = 1)
 			robot.wait(id = 1, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j3 = 0, vel = 20, accel = 100,jerk = 1000, id = 2)
+			robot.play(cmd = "jmove", rel = 0, j3 = 0, vel = 40, accel = 100,jerk = 1000, id = 2)
 			robot.wait(id = 2, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j1 = 90, vel = 20, accel = 100,jerk = 1000, id = 3)
+			robot.play(cmd = "jmove", rel = 0, j1 = 90, vel = 40, accel = 100,jerk = 1000, id = 3)
 			robot.wait(id = 3, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j2 = -60, vel = 20, accel = 100,jerk = 1000, id = 4)
+			robot.play(cmd = "jmove", rel = 0, j2 = -60, vel = 40, accel = 100,jerk = 1000, id = 4)
 			robot.wait(id = 4, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j1 = 45, vel = 20, accel = 100,jerk = 1000, id = 5)
+			robot.play(cmd = "jmove", rel = 0, j1 = 45, vel = 40, accel = 100,jerk = 1000, id = 5)
 			robot.wait(id = 5, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j1 = 0, j2 = 0, vel = 20, accel = 100,jerk = 1000, id = 6)
+			robot.play(cmd = "jmove", rel = 0, j1 = 0, j2 = 0, vel = 40, accel = 100,jerk = 1000, id = 6)
 			robot.wait(id = 6, stat = 2)
 
 
-			#start robot bolt demo routine, lower robot to first bolt position. 
+			#start robot bolt demo routine, lower robot to first bolt position.
 
-			robot.play(cmd = "lmove", rel = 0, a = 0, b = 90, vel = 20, accel = 100,jerk = 1000, id = 1)
+			z_start_height = 122 
+
+			#bolt position #1
+			robot.play(cmd = "lmove", rel = 0, a = 0, b = 90, vel = 40, accel = 100,jerk = 1000, id = 1)
 			robot.wait(id = 1, stat = 2)
-			robot.play(cmd = "lmove", rel = 0, x = 354, y = 0, z = 150, vel = 20, accel = 100,jerk = 1000, id = 2)
+			robot.play(cmd = "lmove", rel = 0, x = 354, y = -2, z = 150, vel = 40, accel = 100,jerk = 1000, id = 2)
 			robot.wait(id = 2, stat = 2)
-			robot.play(cmd = "lmove", rel = 0, z = 124, vel = 20, accel = 100,jerk = 1000, id = 3)
+			robot.play(cmd = "lmove", rel = 0, z = z_start_height, vel = 40, accel = 100,jerk = 1000, id = 3)
 			robot.wait(id = 3, stat = 2)
 
-			
+		
 			#enable stepper
 			stepperENA_pub.publish(True)
 			rospy.sleep(1)
@@ -78,7 +81,7 @@ if __name__ == '__main__':
 			
 			#Variables for loop to unscrew bolt and raise z axis by equal amounts
 			id_counter = 5
-			new_z = 124
+			new_z = z_start_height
 
 			for i in range(15): 
 				#do 1 rotation of the stepper motor for each 1.25mm lift of robot arm (the pitch of 8mm screw)
@@ -97,29 +100,34 @@ if __name__ == '__main__':
 				new_z = new_z + 1.25
 
 			#move to travel z height
-			robot.play(cmd = "lmove", rel = 0, z = 175, vel = 20, accel = 100,jerk = 1000, id = 100)
+			robot.play(cmd = "lmove", rel = 0, z = 175, vel = 40, accel = 100,jerk = 1000, id = 100)
 			robot.wait(id = 100, stat = 2)
 
-			#intermediate moves to get robot to correct location
-			robot.play(cmd = "jmove", rel = 0, j0 = .073, j1 = 170.361, j2 = -138.613, j3 = 55.260, j4 = 360.810, vel = 10, accel = 100,jerk = 1000, id = 101)
-			robot.wait(id = 101, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j0 = 180.169, j1 = 168.669, j2 = -136.557, j3 = 61.256, j4 = 360.079, vel = 10, accel = 100,jerk = 1000, id = 102)
-			robot.wait(id = 102, stat = 2)
-			robot.play(cmd = "jmove", rel = 0, j0 = 180, j1 = 119.493, j2 = 67.603, j3 = -5.513, j4 = 272.632, vel = 10, accel = 100,jerk = 1000, id = 103)
-			robot.wait(id = 103, stat = 2)
-
 			#move robot arm to other hole location
-			robot.play(cmd = "lmove", rel = 0, x = 227.269, y = -1.764, vel = 10, accel = 100,jerk = 1000, id = 105)
-			robot.wait(id = 105, stat = 2)
-			robot.play(cmd = "lmove", rel = 0, a = 0, b = 90, vel = 20, accel = 100,jerk = 1000, id = 104)
+			z_tighten_height = 135
+
+			robot.play(cmd = "lmove", rel = 0, a = 1, b = 91, vel = 40, accel = 100,jerk = 1000, id = 104)
 			robot.wait(id = 104, stat = 2)
-			robot.play(cmd = "lmove", rel = 0, z= 132, vel = 10, accel = 100,jerk = 1000, id = 106)
+			robot.play(cmd = "lmove", rel = 0, x = 420, y = 17, vel = 20, accel = 100,jerk = 1000, id = 105)
+			robot.wait(id = 105, stat = 2)
+			robot.play(cmd = "lmove", rel = 0, z = z_tighten_height, vel = 20, accel = 100,jerk = 1000, id = 106)
 			robot.wait(id = 106, stat = 2)
 
 			#tighten bolt
 			id_counter = 200
-			new_z = 132
-			for i in range(10): 
+			new_z = z_tighten_height
+			
+			open_servo_previously = False   #variable to make sure servo and delay for servo when tightening bolt is only run once
+			for i in range(10):
+
+
+				#if bolt threaded in and reaching bottom of travel command servo to open aperture
+				if new_z <= 130 and open_servo_previously == False:
+					servo_pos_msg.data = 20
+					servo_pub.publish(servo_pos_msg.data)
+					rospy.sleep(3)
+					open_servo_previously = True
+
 				#do 1 rotation of the stepper motor for each 1.25mm drop of robot arm (the pitch of 8mm screw)
 				#rotate stepper motor once
 				stepperRun_pub.publish(800)
@@ -134,21 +142,25 @@ if __name__ == '__main__':
 				rospy.loginfo(new_z)
 				#set z height for next loop run to current z height  
 				new_z = new_z - 1.25
-			
-			
-			
-			
-			#open aperature, set stepper speed to 0
-			stepperRun_pub.publish(0)
-			servo_pos_msg.data = 15
-			servo_pub.publish(servo_pos_msg.data)
-			rospy.sleep(5)
 
-			
+
+			#tighten bolt a couple more times without adjusting z axis
+			stepperRun_pub.publish(800*2)
+			#give time to unscrew bolt
+			rospy.sleep(2)
+
+			#move robot up and away from bolt
+			robot.play(cmd = "lmove", rel = 0, z = 300, vel = 40, accel = 100,jerk = 1000, id = 300)
+			robot.wait(id = 300, stat = 2)
+			robot.play(cmd = "lmove", rel = 0, x = 300, vel = 40, accel = 100,jerk = 1000, id = 301)
+			robot.wait(id = 301, stat = 2)
+
+
+			#close connection to dorna robot, increase loop count
 			robot.close()
 			loop_counter = loop_counter + 1
 
-		#no matter what open servo back up, make sure it isn't stalled
+		
 		rate.sleep()
 
 
